@@ -3,11 +3,11 @@ Personal Info
 ## **List Challenge**
 List of challenge I solved
 ## **Week 1**
-| **Category**    | **Challenge**   |
-| -------------   | -------------   |
-| Web Explotation | ezqlite         |
-| Web Explotation | Mongkey         |
-| Web Explotation | Haiku           |
-| Web Explotation | Figl33t         |
-| Web Explotation | Fortune Cookies |
-| Miscellaneous   | Sanity check    |
+| **Category**    | **Challenge**                       |
+| -------------   | -------------                       |
+| Web Explotation | [Ezqlite](ezqlite/README.md)        |
+| Web Explotation | [Mongkey](Monkey/monkey-solve.md)   |
+| Web Explotation | [Haiku](Haiku/haiku-solve.md)       |
+| Web Explotation | [Figl33t](figl33t/figl33t-solve.md) |
+| Web Explotation | [Fortune Cookies](fortune-cookies/cookies-solve.md) |
+| Miscellaneous   | [Sanity check](Sanity-check/sanity-solve.md)        |
