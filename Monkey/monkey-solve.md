@@ -1,13 +1,16 @@
 # **MONKEY**
-description ....
+
+NoSQL injection adalah serangan yang ditujukan untuk melanggar keamanan aplikasi yang menggunakan database NoSQL. Serangan ini mirip dengan serangan SQL injection, tetapi ditargetkan pada database NoSQL yang menggunakan model datanya yang berbeda dengan database relasional.
+
+Dalam serangan NoSQL injection, penyerang mencoba memanipulasi atau menyisipkan data yang tidak valid atau berbahaya ke dalam permintaan atau operasi database NoSQL. Tujuan utama serangan ini adalah untuk mendapatkan akses yang tidak sah ke data sensitif atau merusak integritas data dalam database NoSQL.
 ## **About the challenge**
-Pada Challenge ini, Probleset meminta pemain untuk login sebagai admin danmemberikan halaman login serta akun guest:guest untuk masuk.
+Pada Challenge ini, Probleset meminta pemain untuk login sebagai admin dan memberikan halaman login serta akun guest:guest untuk masuk.
 
 ![monkey](./image/monkey.PNG)
 ## **Solution**
 Saya mencoba login dan hanya muncul pesan "Welcome, guest". Ditambah dengan gambar monyet yang sedikit ngeselin. Tujuan saya adalah untuk login sebagai admin. Setelah saya login sebagai admin, tidak ada flag yang tertera. Tempat injeksi yang mungkin adalah halaman login.
 
-Tentu saja hal pertama yang saya adalah injeksi SQL, tetapi setelah mencoba-coba dengan halaman login untuk beberapa waktu, saya mengerti bahwa itu tidak ada hubungannya dengan SQL. Cara selanjutnya adalah mencoba NoSQL dan kemudian saya mendapatkan hasil yang sangat menarik. Dari injeksi awal, tampaknya basis data backend menggunakan MongoDB dan saya memutuskan untuk membaca sedikit lebih banyak tentangnya.
+Tentu saja hal pertama yang saya lakukan adalah injeksi SQL, tetapi setelah mencoba-coba dengan halaman login untuk beberapa waktu, saya mengerti bahwa itu tidak ada hubungannya dengan SQL. Cara selanjutnya adalah mencoba NoSQL dan kemudian saya mendapatkan hasil yang sangat menarik. Dari injeksi awal, tampaknya basis data backend menggunakan MongoDB dan saya memutuskan untuk membaca sedikit lebih banyak tentangnya.
 
 Secara sederhana, MongoDB bekerja seperti ini:
 
@@ -76,11 +79,12 @@ while restart:
 ```
 Skrip berfungsi sebagai berikut:
 
-1) Karena kata sandi adalah flag, kita yakin bahwa kata sandi dimulai dengan ```FOrestyHC{```ga hal ini dapat digunakan untuk memverifikasi apakah yang kita lakukan adalah benar.
+1) Karena kata sandi adalah flag, kita yakin bahwa kata sandi dimulai dengan ```ForestyHC{```sehingga hal ini dapat digunakan untuk memverifikasi apakah yang saya lakukan adalah benar.
 
-2) Saya berasumsi bahwa karakter seperti +, * dan & tidak akan ada karena dapat mengganggu Regex (dan untungnya tidak ada!)
+2) Saya berasumsi bahwa karakter seperti ```+, * dan &``` tidak akan ada karena dapat mengganggu Regex (dan hokinya saya tidak ada!)
 
-3) Skrip berhenti ketika kami mendapatkan pengalihan 302 ketika karakternya adalah } karena kami yakin bahwa karakter akhir akan menjadi } (lagi, karena kata sandi sama dengan bendera).
+3) Skrip berhenti ketika saya mendapatkan pengalihan ```302``` ketika karakternya adalah } karena saya yakin bahwa karakter akhir akan menjadi } (lagi, karena kata sandi sama dengan flagnya).
+
 And we got flag
 ```
 ForestyHC{reject_humanity_return_to_monke_5543d8}
