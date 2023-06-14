@@ -42,7 +42,7 @@ saya menggunakan script dibawah ini
 import requests
 import string
 
-# We are sure that password is the flag which starts with "TWCTF{"
+#  I sure that password is the flag which starts with "ForestyHC{"
 # and ends with "}"
 
 flag = "ForestyHC{"
