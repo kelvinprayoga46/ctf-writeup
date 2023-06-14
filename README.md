@@ -10,4 +10,4 @@ List of challenge I solved
 | Web Explotation | [Haiku](Haiku/haiku-solve.md)       |
 | Web Explotation | [Figl33t](figl33t/figl33t-solve.md) |
 | Web Explotation | [Fortune Cookies](fortune-cookies/cookies-solve.md) |
-| Miscellaneous   | [Sanity check](Sanity-check/sanity-solve.md)        |
+| Miscellaneous   | [Sanity check](Sanity-Check/sanity-solve.md)        |
