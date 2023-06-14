@@ -1,12 +1,10 @@
 # **FIGLET**
 Figlet adalah sebuah program komputer yang digunakan untuk menghasilkan teks berukuran besar dalam gaya seni ASCII. Nama "Figlet" sendiri merupakan kependekan dari "Frank, Ian, and Glenn's LETters". Program ini dibuat oleh sekelompok programmer pada tahun 1991 dan telah menjadi populer di kalangan komunitas pengguna Unix dan Linux.
 Figlet dapat mengubah teks biasa menjadi teks berukuran besar dengan berbagai gaya huruf yang kreatif, seperti huruf-huruf berkontur, huruf-huruf berbayang, huruf-huruf yang terdiri dari karakter-karakter kecil, dan banyak lagi. Program ini menawarkan berbagai pilihan gaya huruf yang bisa dipilih sesuai dengan preferensi pengguna.
-
-Gambar Logo 
 ## **About the challenge**
 Pada challenge kali ini, probleset membuatkan sebuah website untuk temannya yang menyukai seni ASCII. Web tersebut setelah dianalisis memiliki vulnerability pada inputannya.
 
-Gambar logo
+![figlet1](./image/figlet1.PNG)
 ## **Solution**
 - Buka App.js yang diberikan oleh probleset dan analisis code tersebut.
 - Pada kode yang diberikan, terdapat potensi kerentanan terkait dengan Command Injection. Potensi kerentanan ini terdapat pada bagian code berikut:
@@ -29,7 +27,7 @@ hello';ls /;echo '1
 ```
 Output dari teks yang saya masukkan diwebsite tersebut seperti ini :
 
-Image
+![figlet2](./image/figlet2.PNG)
 
 Dapat dilihat flag nya dengan format[kodeacak].txt, saya bisa read flag tersebut dengan kode dibawah ini :
 ```
