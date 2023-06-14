@@ -1,10 +1,40 @@
 # **MONKEY**
 description ....
 ## **About the challenge**
-description
+Pada Challenge ini, Probleset meminta pemain untuk login sebagai admin danmemberikan halaman login serta akun guest:guest untuk masuk.
+
+![monkey](./image/monkey.PNG)
 ## **Solution**
-bla bla bla
-saya menggunakan script brute force dibawah ini
+Saya mencoba login dan hanya muncul pesan "Welcome, guest". Ditambah dengan gambar monyet yang sedikit ngeselin. Tujuan saya adalah untuk login sebagai admin. Setelah saya login sebagai admin, tidak ada flag yang tertera. Tempat injeksi yang mungkin adalah halaman login.
+
+Tentu saja hal pertama yang saya adalah injeksi SQL, tetapi setelah mencoba-coba dengan halaman login untuk beberapa waktu, saya mengerti bahwa itu tidak ada hubungannya dengan SQL. Cara selanjutnya adalah mencoba NoSQL dan kemudian saya mendapatkan hasil yang sangat menarik. Dari injeksi awal, tampaknya basis data backend menggunakan MongoDB dan saya memutuskan untuk membaca sedikit lebih banyak tentangnya.
+
+Secara sederhana, MongoDB bekerja seperti ini:
+
+Request: ```login.php?user=admin&password=1```
+
+```php
+$collection->find(array(
+    "username" => "admin",
+    "password" => "1"
+));
+```
+---------------------------
+Username dan password dikumpulkan dari data yang masuk dan database langsung dicari menggunakan data tersebut. 
+Lalu bagaimana jika kita dapat melewatkan objek atau array?
+
+Request: ```login.php?user[$gt]=&password[$gt]=```
+```php
+$collection->find(array(
+    "username" => array("$gt" => 1),
+    "password" => array("$gt" => 1)
+));
+```
+Ini akan menghindari skema Autentikasi dan akan memasukkan kita langsung ke akun pertama di database, yaitu admin! Jadi sekarang kita sudah masuk sebagai admin! Tetapi flag-nya adalah password admin jadi saya perlu mengekstraknya. Saya mencari di Google cara mengekstrak data tetapi tidak memberi saya banyak pilihan. Kemudian saya mengetahui tentang $regex yang digunakan untuk membandingkan karakter password satu per satu. Jadi berikut adalah logikanya:
+
+saya menginisiasi permintaan dengan ```user=admin&password[$regex]=F.*```. Anda dapat melihat bahwa ini memberikan pengalihan ```302``` karena password dimulai dengan F (karena password adalah flag dan sesuai dengan aturan, flag dimulai dengan ```ForestyHC```). Untuk semua karakter lainnya, itu memberikan kode status ```200```. saya dapat dengan mudah mengotomatiskan ini untuk menemukan sisa password.
+
+saya menggunakan script dibawah ini
 ```python
 import requests
 import string
@@ -44,6 +74,13 @@ while restart:
                 exit(0)
             break
 ```
+Skrip berfungsi sebagai berikut:
+
+1) Karena kata sandi adalah flag, kita yakin bahwa kata sandi dimulai dengan ```FOrestyHC{```ga hal ini dapat digunakan untuk memverifikasi apakah yang kita lakukan adalah benar.
+
+2) Saya berasumsi bahwa karakter seperti +, * dan & tidak akan ada karena dapat mengganggu Regex (dan untungnya tidak ada!)
+
+3) Skrip berhenti ketika kami mendapatkan pengalihan 302 ketika karakternya adalah } karena kami yakin bahwa karakter akhir akan menjadi } (lagi, karena kata sandi sama dengan bendera).
 And we got flag
 ```
 ForestyHC{reject_humanity_return_to_monke_5543d8}
