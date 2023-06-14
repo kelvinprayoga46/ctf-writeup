@@ -6,7 +6,7 @@ Dalam serangan NoSQL injection, penyerang mencoba memanipulasi atau menyisipkan 
 ## **About the challenge**
 Pada Challenge ini, Probleset meminta pemain untuk login sebagai admin dan memberikan halaman login serta akun guest:guest untuk masuk.
 
-![monkey](./image/monkey.PNG)
+![monkey](./image/monkey1.PNG)
 ## **Solution**
 Saya mencoba login dan hanya muncul pesan "Welcome, guest". Ditambah dengan gambar monyet yang sedikit ngeselin. Tujuan saya adalah untuk login sebagai admin. Setelah saya login sebagai admin, tidak ada flag yang tertera. Tempat injeksi yang mungkin adalah halaman login.
 
