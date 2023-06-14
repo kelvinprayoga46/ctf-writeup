@@ -84,6 +84,7 @@ Skrip berfungsi sebagai berikut:
 2) Saya berasumsi bahwa karakter seperti ```+, * dan &``` tidak akan ada karena dapat mengganggu Regex (dan hokinya saya tidak ada!)
 
 3) Skrip berhenti ketika saya mendapatkan pengalihan ```302``` ketika karakternya adalah } karena saya yakin bahwa karakter akhir akan menjadi } (lagi, karena kata sandi sama dengan flagnya).
+![monkey2](./image/monkey2.jpeg)
 
 And we got flag
 ```
